@@ -10,15 +10,16 @@ import {
     useBreakpointValue,
     useDisclosure,
     Icon,
-    // Link
+    Link,
+    // Button
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
     CloseIcon,
 
   } from '@chakra-ui/icons';
-//   import {Link as RouterLink} from "react-router-dom"
-// import Profile from "./Profile";
+  import {Link as RouterLink} from "react-router-dom"
+import Profile from "./Profile";
 import { BsCart3 } from "react-icons/bs";
   
 
@@ -27,7 +28,8 @@ const Navbar=()=>{
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-      <Box>
+      <Box >
+        {/* as="header" position="fixed" w="100%" */}
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
@@ -89,12 +91,12 @@ const Navbar=()=>{
               }}>
               Sign Up
             </Button> */}
-            {/* <Link as={RouterLink} to="/cart"> */}
+            <Link as={RouterLink} to="/cart">
             <Box position="relative" padding="0 0.5rem 0 0">
             <Icon as={BsCart3} boxSize="2rem" />
             </Box>
-            {/* </Link> */}
-            {/* <Profile/> */}
+            </Link>
+            <Profile/>
           </Stack>
         </Flex>
   
