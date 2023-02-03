@@ -6,12 +6,12 @@ import { Link, useParams } from "react-router-dom";
   function ProductSimple({image, title, price}) {
     const {id} = useParams()
     const dispatch=useDispatch()
-//     useEffect(()=>{
-//       if(id){
-//           dispatch(getSingleProduct(id))
-//       }
-//   },[dispatch,id])
-//     console.log(id)
+    useEffect(()=>{
+      if(id){
+          dispatch((id))//getsingle
+      }
+  },[dispatch,id])
+    console.log(id)
     return (
       <Center py={12}>
         <Link to={`/products/${id}`}>
