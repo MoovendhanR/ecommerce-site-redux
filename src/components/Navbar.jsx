@@ -21,6 +21,7 @@ import {
   import {Link as RouterLink} from "react-router-dom"
 import Profile from "./Profile";
 import { BsCart3 } from "react-icons/bs";
+import CartCounter from "./CartCounter";
   
 
 const Navbar=()=>{
@@ -93,6 +94,7 @@ const Navbar=()=>{
             </Button> */}
             <Link as={RouterLink} to="/cart">
             <Box position="relative" padding="0 0.5rem 0 0">
+              <CartCounter/>
             <Icon as={BsCart3} boxSize="2rem" />
             </Box>
             </Link>
