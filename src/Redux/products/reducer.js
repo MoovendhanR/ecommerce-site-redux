@@ -3,8 +3,8 @@ const initialState ={
     products: [],
     error:"",
     currentProduct:{},
-    loading:false,
-    cart:[]
+    cart:[],
+    loading:false
 }
 
 const ProductReducer = (state=initialState,action)=>{
@@ -64,6 +64,26 @@ error:"",
 loading:false
 }
 case types.ADD_PRODUCT_CART_FAILURE:
+return{
+...state,
+error:payload,
+loading:false
+}
+//fetching cart product
+case types.FETCH_CART_REQUEST:
+return{
+...state,
+error:"",
+loading:true
+}
+case types.FETCH_CART_SUCCESS:
+return{
+...state,
+cart:payload,
+error:"",
+loading:false
+}
+case types.FETCH_CART_FAILURE:
 return{
 ...state,
 error:payload,
