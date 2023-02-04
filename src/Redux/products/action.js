@@ -123,7 +123,34 @@ const fetchCart = (payload) => (dispatch) => {
     .then(res => dispatch(fetchCartSuccess(res.data)))
     .catch(err => dispatch(fetchCartFailure(err)))
 }
+//removing cart items
+const removeProductCartRequest =(payload) => {
+    return{
+        type: types.REMOVE_PRODUCT_CART_REQUEST,
+        payload
+    }
+}
+
+const removeProductCartSuccess =(payload) => {
+ return{
+     type: types.REMOVE_PRODUCT_CART_SUCCESS,
+     payload
+ }
+}
+
+const removeProductCartFailure =(payload) => {
+ return{
+     type: types.FETCH_CART_FAILURE,
+     payload
+ }
+}
+
+const removeCartItem=(id)=>(dispatch) => {
+    dispatch(removeProductCartRequest());
+    Axios.delete(`/cart/${id}`)
+    .then(res=>dispatch(removeProductCartSuccess(res.data)))
+    .catch(err=>dispatch(removeProductCartFailure(err)))
+}
 
 
-
-export {fetchData, getSingleProduct, addProductCart, fetchCart}
+export {fetchData, getSingleProduct, addProductCart, fetchCart, removeCartItem}
