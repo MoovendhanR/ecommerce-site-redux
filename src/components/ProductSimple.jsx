@@ -13,7 +13,6 @@ import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
           dispatch(getSingleProduct(id))//getsingle
       }
   },[dispatch,id])
-    console.log(id)
     return (
       <Center py={12}>
         <Link to={`/products/${num}`}>

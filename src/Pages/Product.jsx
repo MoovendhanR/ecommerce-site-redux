@@ -21,7 +21,7 @@ import {
   import { MdLocalShipping } from 'react-icons/md';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingleProduct } from '../Redux/products/action';
+import { addProductCart, getSingleProduct } from '../Redux/products/action';
   
   export default function Product() {
 const {id}=useParams();
@@ -33,6 +33,10 @@ console.log(currentProduct);
             dispatch(getSingleProduct(id))
           }
    },[dispatch,id])
+   const addToCartHandler=()=>{
+       currentProduct && dispatch(addProductCart(currentProduct))
+   }
+
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid
@@ -99,22 +103,21 @@ console.log(currentProduct);
                 <List spacing={2}>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
-                      Rating :
+                      Category :
+                    </Text>{' '}
+                    {currentProduct?.category}
+                  </ListItem>
+                  <ListItem>
+                    <Text as={'span'} fontWeight={'bold'}>
                     </Text>{' '}
                     {/* {currentProduct?.rating?.rate} */}
-                    <Rating rating={currentProduct.rating.rate} numReviews={currentProduct.rating.count} />
+                    <Rating rating={currentProduct?.rating?.rate} numReviews={currentProduct?.rating?.count} />
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
                       Rating counts :
                     </Text>{' '}
                       {currentProduct?.rating?.count}
-                  </ListItem>
-                  <ListItem>
-                    <Text as={'span'} fontWeight={'bold'}>
-                      Category :
-                    </Text>{' '}
-                    {currentProduct?.category}
                   </ListItem>
                 
                  
@@ -134,7 +137,9 @@ console.log(currentProduct);
               _hover={{
                 transform: 'translateY(2px)',
                 boxShadow: 'lg',
-              }}>
+              }}
+              onClick={addToCartHandler}
+              >
               Add to cart
             </Button>
   
