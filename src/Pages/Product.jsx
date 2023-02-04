@@ -79,7 +79,7 @@ console.log(currentProduct);
                   color={useColorModeValue('gray.500', 'gray.400')}
                   fontSize={'2xl'}
                   fontWeight={'300'}>
-                   {currentProduct.description}
+                   {currentProduct?.description}
                 </Text>
                 
               </VStack>
@@ -99,19 +99,19 @@ console.log(currentProduct);
                     <Text as={'span'} fontWeight={'bold'}>
                       Rating :
                     </Text>{' '}
-                    {currentProduct.rating.rate}
+                    {currentProduct?.rating?.rate}
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
                       Rating counts :
                     </Text>{' '}
-                      {currentProduct.rating.count}
+                      {currentProduct?.rating?.count}
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
                       Category :
                     </Text>{' '}
-                    {currentProduct.category}
+                    {currentProduct?.category}
                   </ListItem>
                 
                  

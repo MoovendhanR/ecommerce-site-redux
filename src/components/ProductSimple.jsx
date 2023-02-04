@@ -2,19 +2,20 @@ import { Box, Center, Heading, Image, Stack, Text, useColorModeValue } from "@ch
 import { useEffect } from "react";
  import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { getSingleProduct } from "../Redux/products/action";
 
-  function ProductSimple({image, title, price}) {
+  function ProductSimple({num,image, title, price}) {
     const {id} = useParams()
     const dispatch=useDispatch()
     useEffect(()=>{
       if(id){
-          dispatch((id))//getsingle
+          dispatch(getSingleProduct(id))//getsingle
       }
   },[dispatch,id])
     console.log(id)
     return (
       <Center py={12}>
-        <Link to={`/products/${id}`}>
+        <Link to={`/products/${num}`}>
         <Box
           role={'group'}
           p={6}

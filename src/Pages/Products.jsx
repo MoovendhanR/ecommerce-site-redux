@@ -46,6 +46,7 @@ const Products=()=>{
                         return( 
                        <ProductSimple 
                        key={pro.id}
+                        num={pro.id}
                         image={pro.image} 
                         title={pro.title}
                         price={pro.price}/>)
