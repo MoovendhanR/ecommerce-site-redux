@@ -11,6 +11,7 @@ import {
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from 'react-router-dom';
+import FilterComponents from '../components/FileterComponent';
 import ProductSimple from '../components/ProductSimple';
 import { fetchData } from "../Redux/products/action";
 
@@ -34,14 +35,20 @@ const Products=()=>{
     return(
         <Box>
             <Stack display={{md:"flex"}} flexDirection={{md:"row"}}>
-
+             <Box minWidth={"15rem"}>
+                <FilterComponents/>
+             </Box>
           
             <Box>
                 <Heading as="h3">Products</Heading>
                 <Flex flexWrap="wrap" justifyContent="space-around">
                     {products.map(pro=>{
                         return( 
-                       <ProductSimple key={pro.id} image={pro.image} title={pro.title} price={pro.price}/>)
+                       <ProductSimple 
+                       key={pro.id}
+                        image={pro.image} 
+                        title={pro.title}
+                        price={pro.price}/>)
                     })}
                 </Flex>
                 
