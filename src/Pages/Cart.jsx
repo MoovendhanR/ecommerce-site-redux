@@ -11,11 +11,13 @@ const Cart = () => {
    
     useEffect(()=>{
            dispatch(fetchCart())
-    },[dispatch])
-  console.log(cartItems)
-   const remmoveProduct =(id)=>{
-        dispatch(removeCartItem(id))
-   }
+          dispatch(removeCartItem())
+
+        },[dispatch])
+        console.log(cartItems)
+        const remmoveProduct =(id)=>{
+             dispatch(removeCartItem(id))
+        }
 
   return (
     <>
@@ -83,7 +85,7 @@ function CartItem({id,title, description, price,image,remmoveProduct}){
             </Box>
             <Box height={"300px"} width="300px">
                 <Stack p={4}>
-                <Heading as="h3" size="lg">{title}</Heading>
+                <Heading as="h4" size="lg" textOverflow={"ellipsis"}>{title}</Heading>
                 <Box overflow={"hidden"} whiteSpace="nowrap" >
                 <Text textOverflow={"ellipsis"} width="100px">
                     {description}

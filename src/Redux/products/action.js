@@ -149,6 +149,7 @@ const removeCartItem=(id)=>(dispatch) => {
     dispatch(removeProductCartRequest());
     Axios.delete(`/cart/${id}`)
     .then(res=>dispatch(removeProductCartSuccess(res.data)))
+    .then(res=>dispatch(fetchCart(res.data)))
     .catch(err=>dispatch(removeProductCartFailure(err)))
 }
 
