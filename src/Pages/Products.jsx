@@ -49,7 +49,10 @@ const Products=()=>{
                         num={pro.id}
                         image={pro.image} 
                         title={pro.title}
-                        price={pro.price}/>)
+                        price={pro.price}
+                        rating={pro.rating.rate}
+                        numReviews={pro.rating.count}
+                        />)
                     })}
                 </Flex>
                 

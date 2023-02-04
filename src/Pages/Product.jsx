@@ -15,6 +15,8 @@ import {
     ListItem,
   } from '@chakra-ui/react';
   import { useParams } from 'react-router-dom';
+  import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
 import { useEffect } from 'react';
@@ -99,7 +101,8 @@ console.log(currentProduct);
                     <Text as={'span'} fontWeight={'bold'}>
                       Rating :
                     </Text>{' '}
-                    {currentProduct?.rating?.rate}
+                    {/* {currentProduct?.rating?.rate} */}
+                    <Rating rating={currentProduct.rating.rate} numReviews={currentProduct.rating.count} />
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
@@ -144,3 +147,33 @@ console.log(currentProduct);
       </Container>
     );
   }
+
+
+  
+function Rating({ rating, numReviews }) {
+  return (
+    <Flex d="flex" alignItems="center">
+      {Array(5)
+        .fill('')
+        .map((_, i) => {
+          const roundedRating = Math.round(rating * 2) / 2;
+          if (roundedRating - i >= 1) {
+            return (
+              <BsStarFill
+                key={i}
+                style={{ marginLeft: '1' }}
+                color={i < rating ? 'teal.500' : 'gray.300'}
+              />
+            );
+          }
+          if (roundedRating - i === 0.5) {
+            return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
+          }
+          return <BsStar key={i} style={{ marginLeft: '1' }} />;
+        })}
+      <Box as="span" ml="2" color="gray.600" fontSize="sm">
+        {numReviews} review{numReviews > 1 && 's'}
+      </Box>
+    </Flex>
+  );
+}

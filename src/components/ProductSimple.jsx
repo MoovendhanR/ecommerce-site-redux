@@ -1,10 +1,11 @@
-import { Box, Center, Heading, Image, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, Image, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { useEffect } from "react";
  import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getSingleProduct } from "../Redux/products/action";
+import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 
-  function ProductSimple({num,image, title, price}) {
+  function ProductSimple({num,image, title, price ,rating, numReviews }) {
     const {id} = useParams()
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -77,12 +78,46 @@ import { getSingleProduct } from "../Redux/products/action";
              ₹{price+200}
             </Text>
           </Stack>
+            <Box>
+              <Rating rating={rating} numReviews={numReviews}/>
+            </Box>
         </Stack>
       </Box>
       </Link>
     </Center>
   );
 }
+
+
+function Rating({ rating, numReviews }) {
+  return (
+    <Flex d="flex" alignItems="center">
+      {Array(5)
+        .fill('')
+        .map((_, i) => {
+          const roundedRating = Math.round(rating * 2) / 2;
+          if (roundedRating - i >= 1) {
+            return (
+              <BsStarFill
+                key={i}
+                style={{ marginLeft: '1' }}
+                color={i < rating ? 'teal.500' : 'gray.300'}
+              />
+            );
+          }
+          if (roundedRating - i === 0.5) {
+            return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
+          }
+          return <BsStar key={i} style={{ marginLeft: '1' }} />;
+        })}
+      <Box as="span" ml="2" color="gray.600" fontSize="sm">
+        {numReviews} review{numReviews > 1 && 's'}
+      </Box>
+    </Flex>
+  );
+}
+
+
 
 
 export default ProductSimple;
