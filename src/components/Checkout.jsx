@@ -18,7 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 
 function CheckOut({cart,checkoutHandler}) {
-    var total=1;
+    var total=0;
     for(let i=0;i<cart.length;i++){
            total=total+cart[i].price*30;
     }
