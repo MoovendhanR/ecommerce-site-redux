@@ -183,32 +183,30 @@ const addOrders = (payload) =>(dispatch)=>{
      }
 
      Promise.all(orderPayload)
-     .then((r)=>{
-        console.log(r)
-     dispatch(addingOrdersSuccess(r.data))})
+     .then((r)=>{dispatch(addingOrdersSuccess())})
      .then(()=>dispatch(emptyCart(payload)))
-     .catch((err)=>dispatch(addingOrdersFailure(err)))
+     .catch((err)=>dispatch(addingOrdersFailure()))
 }
 
 //emapty cart
-const emptyCartRequest =(payload) => {
+const emptyCartRequest =() => {
     return{
         type: types.EMPTY_CART_REQUEST,
-        payload
+        
     }
 }
 
-const emptyCartSuccess =(payload) => {
+const emptyCartSuccess =() => {
  return{
      type: types.EMPTY_CART_SUCCESS,
-     payload
+     
  }
 }
 
-const emptyCartFailure = (payload) => {
+const emptyCartFailure = () => {
  return{
      type: types.EMPTY_CART_FAILURE,
-     payload
+     
  }
 }
 

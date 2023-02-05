@@ -49,11 +49,11 @@ const Cart = () => {
         cart?.map((ele)=>{
             return(
 
-                <CartItem id={ele.id} title={ele.title} description={ele.description} price={ele.price} image={ele.image} remmoveProduct={remmoveProduct} />
+                <CartItem key={ele.id} id={ele.id} title={ele.title} description={ele.description} price={ele.price} image={ele.image} remmoveProduct={remmoveProduct} />
             )
         })
        }
-       <CheckOut cart={cart} checkoutHandler={checkoutHandler}/>
+       <CheckOut  cart={cart} checkoutHandler={checkoutHandler}/>
        </Box>
     </>
   )
