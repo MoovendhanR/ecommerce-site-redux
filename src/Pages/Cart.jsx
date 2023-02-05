@@ -3,10 +3,11 @@ import { Box, Button, Heading, Image, Stack, Text, useColorModeValue } from '@ch
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BoxShadow } from '../components/BoxShadow'
+import CheckOut from '../components/Checkout'
 import { fetchCart,removeCartItem } from '../Redux/products/action'
 
 const Cart = () => {
-    const cartItems =useSelector((store)=>store.ecommerceData.cart)
+    const cart =useSelector((store)=>store.ecommerceData.cart)
     const dispatch = useDispatch()
    
     useEffect(()=>{
@@ -14,10 +15,14 @@ const Cart = () => {
           dispatch(removeCartItem())
 
         },[dispatch])
-        console.log(cartItems)
+        console.log(cart)
         const remmoveProduct =(id)=>{
              dispatch(removeCartItem(id))
         }
+
+    const CartHandler = ()=>{
+
+    }
 
   return (
     <>
@@ -41,14 +46,14 @@ const Cart = () => {
             Cart
         </Heading>
        {
-        cartItems?.map((ele)=>{
+        cart?.map((ele)=>{
             return(
 
                 <CartItem id={ele.id} title={ele.title} description={ele.description} price={ele.price} image={ele.image} remmoveProduct={remmoveProduct} />
             )
         })
        }
-
+       <CheckOut cart={cart} CartHandler={CartHandler}/>
        </Box>
     </>
   )
@@ -96,7 +101,7 @@ function CartItem({id,title, description, price,image,remmoveProduct}){
                 fontWeight={300}
                 fontSize={"2xl"}
                 >
-                    ₹{price}
+                    ₹{price*30}
                 </Text>
                 <Button variant={"outline"} leftIcon={<DeleteIcon/>} onClick={()=>remmoveProduct(id)}>Remove</Button>
                 </Stack>

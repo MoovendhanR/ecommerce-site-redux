@@ -71,10 +71,10 @@ import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text fontWeight={800} fontSize={'xl'}>
-             ₹{price}
+             ₹{price*30}
             </Text>
             <Text textDecoration={'line-through'} color={'gray.600'}>
-             ₹{price+200}
+             ₹{price*33}
             </Text>
           </Stack>
             <Box>
