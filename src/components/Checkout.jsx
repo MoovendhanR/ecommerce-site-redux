@@ -3,7 +3,7 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
+    // ModalFooter,
     ModalBody,
     ModalCloseButton,
     Button,
@@ -17,6 +17,11 @@ import {
   } from '@chakra-ui/react'
 
 function CheckOut({cart,checkoutHandler}) {
+    var total=1;
+    for(let i=0;i<cart.length;i++){
+           total=total+cart[i].price*30;
+    }
+
 
     const { isOpen, onOpen, onClose } = useDisclosure()
   
@@ -60,7 +65,7 @@ function CheckOut({cart,checkoutHandler}) {
                            alt="product image" 
                            boxSize="100px" />
                       </Box>
-                      <Box maxW={"250px"} ml="1rem">
+                      <Box maxW={"250px"} ml="1rem" mt="0.2rem">
                           <Text fontSize="lg">{product.title}</Text>
                           <Text fontSize="lg">₹{product.price*30}</Text>
 
@@ -71,12 +76,14 @@ function CheckOut({cart,checkoutHandler}) {
               })}
             </ModalBody>
   
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={checkoutHandler}>
+            <Box>
+                <Flex justifyContent={"space-evenly"}>
+              <Text fontSize={"xl"} mt="2" >Total:₹{total}</Text>
+              <Button colorScheme='blue' mr={3} mb="4" onClick={checkoutHandler}>
                 Confirm
               </Button>
-              {/* <Button variant='ghost'>Secondary Action</Button> */}
-            </ModalFooter>
+                </Flex>
+            </Box>
           </ModalContent>
         </Modal>
       </Box>

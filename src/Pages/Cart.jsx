@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BoxShadow } from '../components/BoxShadow'
 import CheckOut from '../components/Checkout'
-import { fetchCart,removeCartItem } from '../Redux/products/action'
+import { addOrders, fetchCart,removeCartItem } from '../Redux/products/action'
 
 const Cart = () => {
     const cart =useSelector((store)=>store.ecommerceData.cart)
@@ -20,8 +20,8 @@ const Cart = () => {
              dispatch(removeCartItem(id))
         }
 
-    const CartHandler = ()=>{
-
+    const checkoutHandler = ()=>{
+         dispatch(addOrders(cart))
     }
 
   return (
@@ -53,7 +53,7 @@ const Cart = () => {
             )
         })
        }
-       <CheckOut cart={cart} CartHandler={CartHandler}/>
+       <CheckOut cart={cart} checkoutHandler={checkoutHandler}/>
        </Box>
     </>
   )

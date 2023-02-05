@@ -153,5 +153,77 @@ const removeCartItem=(id)=>(dispatch) => {
     .catch(err=>dispatch(removeProductCartFailure(err)))
 }
 
+//adding orders
+const addingOrdersRequest =(payload) => {
+    return{
+        type: types.ADD_ORDER_REQUEST,
+        payload
+    }
+}
 
-export {fetchData, getSingleProduct, addProductCart, fetchCart, removeCartItem}
+const addingOrdersSuccess =(payload) => {
+ return{
+     type: types.ADD_ORDER_SUCCESS,
+     payload
+ }
+}
+
+const addingOrdersFailure = (payload) => {
+ return{
+     type: types.ADD_ORDER_FAILURE,
+     payload
+ }
+}
+
+const addOrders = (payload) =>(dispatch)=>{
+     dispatch(addingOrdersRequest())
+     const orderPayload = [];
+     for(let product of payload) {
+        product && orderPayload.push(Axios.post("/orders",product))
+     }
+
+     Promise.all(orderPayload)
+     .then((r)=>{
+        console.log(r)
+     dispatch(addingOrdersSuccess(r.data))})
+     .then(()=>dispatch(emptyCart(payload)))
+     .catch((err)=>dispatch(addingOrdersFailure(err)))
+}
+
+//emapty cart
+const emptyCartRequest =(payload) => {
+    return{
+        type: types.EMPTY_CART_REQUEST,
+        payload
+    }
+}
+
+const emptyCartSuccess =(payload) => {
+ return{
+     type: types.EMPTY_CART_SUCCESS,
+     payload
+ }
+}
+
+const emptyCartFailure = (payload) => {
+ return{
+     type: types.EMPTY_CART_FAILURE,
+     payload
+ }
+}
+
+const emptyCart = (payload) => (dispatch) => {
+    dispatch(emptyCartRequest());
+    const deleteOrders=[];
+    for(let obj of payload) {
+        let temp = dispatch(removeCartItem(obj.id))
+        deleteOrders.push(temp);
+    }
+    Promise.all(deleteOrders)
+    .then(() =>dispatch(emptyCartSuccess()))
+    .catch((err) =>dispatch(emptyCartFailure(err)))
+}
+
+
+
+export {fetchData, getSingleProduct, addProductCart, fetchCart, removeCartItem,addOrders,emptyCart}
