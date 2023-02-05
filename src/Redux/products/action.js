@@ -223,5 +223,32 @@ const emptyCart = (payload) => (dispatch) => {
 }
 
 
+const fetchOrdersRequest=(payload)=>{
+    return{
+        type: types.FETCH_ORDERS_REQUEST,
+        payload
+    }
+}
+const fetchOrdersSuccess = (payload)=>{
+      return{
+        type: types.FETCH_ORDERS_SUCCESS,
+        payload
+      }
+}
 
-export {fetchData, getSingleProduct, addProductCart, fetchCart, removeCartItem,addOrders,emptyCart}
+const fetchOrdersFailure = (payload)=>{
+   return{
+    type: types.FETCH_ORDERS_FAILURE,
+    payload
+   }
+}
+const fetchOrders = (payload)=> (dispatch)=>{
+      dispatch(fetchOrdersRequest());
+    Axios.get("/orders")
+    .then(r=>dispatch(fetchOrdersSuccess(r.data)))
+    .then(err=>dispatch(fetchOrdersFailure(err)))
+}
+
+
+
+export {fetchData, getSingleProduct, addProductCart, fetchCart, removeCartItem,addOrders,emptyCart,fetchOrders}

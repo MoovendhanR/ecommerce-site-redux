@@ -15,6 +15,7 @@ import {
     Image,
     
   } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 
 function CheckOut({cart,checkoutHandler}) {
     var total=1;
@@ -79,9 +80,11 @@ function CheckOut({cart,checkoutHandler}) {
             <Box>
                 <Flex justifyContent={"space-evenly"}>
               <Text fontSize={"xl"} mt="2" >Total:₹{total}</Text>
-              <Button colorScheme='blue' mr={3} mb="4" onClick={checkoutHandler}>
+              <Link to="/orders">
+              <Button colorScheme='blue' mr={3} mb="4" onClick={checkoutHandler} onClose={onClose}>
                 Confirm
               </Button>
+              </Link>
                 </Flex>
             </Box>
           </ModalContent>

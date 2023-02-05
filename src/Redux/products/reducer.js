@@ -4,6 +4,7 @@ const initialState ={
     error:"",
     currentProduct:{},
     cart:[],
+    orders:[],
     loading:false
 }
 
@@ -103,8 +104,26 @@ case types.REMOVE_PRODUCT_CART_REQUEST:
     error:payload,
     loading:false
     }
-    
-
+//fetching orders
+case types.FETCH_ORDERS_REQUEST:
+return{
+...state,
+error:"",
+loading:true
+}
+case types.FETCH_ORDERS_SUCCESS:
+return{
+...state,
+orders:payload,
+error:"",
+loading:false
+}
+case types.FETCH_ORDERS_FAILURE:
+return{
+...state,
+error:payload,
+loading:false
+}
 
 default:
 return state;
