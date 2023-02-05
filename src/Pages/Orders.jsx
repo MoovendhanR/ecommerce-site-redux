@@ -16,7 +16,7 @@ const Orders = () => {
   return (
     <Box>
            <Heading>Orders</Heading>
-           {orders?.length && orders.map((pro)=>{
+           {orders?.length && orders?.map((pro)=>{
             return <ProductSimple  key={pro.id}
             num={pro.id}
             image={pro.image} 

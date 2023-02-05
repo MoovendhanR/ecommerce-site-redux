@@ -18,6 +18,7 @@ import {
     CloseIcon,
 
   } from '@chakra-ui/icons';
+  import { SiHomeassistantcommunitystore } from "react-icons/si";
   import {Link as RouterLink} from "react-router-dom"
 import Profile from "./Profile";
 import { BsCart3 } from "react-icons/bs";
@@ -97,6 +98,10 @@ const Navbar=()=>{
               <CartCounter/>
             <Icon as={BsCart3} boxSize="2rem" />
             </Box>
+            </Link>
+            <Link as={RouterLink} to="/products">
+
+            <Icon as={SiHomeassistantcommunitystore} boxSize="2rem"/>
             </Link>
             <Profile/>
           </Stack>
