@@ -12,8 +12,16 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
   
   export default function Login() {
+ const dispatch = useDispatch();
+ const [userEmail,setUserEmail] =useState("");
+ const [userPassword,setUserPassword] = useState("");
+
+ 
+
     return (
       <Flex
         minH={'100vh'}
@@ -35,11 +43,11 @@ import {
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" />
+                <Input type="password"value={userPassword} onChange={(e)=>setUserPassword(e.target.value)} />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
