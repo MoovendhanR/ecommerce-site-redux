@@ -16,8 +16,6 @@ import {
   } from '@chakra-ui/react';
   import { useParams } from 'react-router-dom';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-
-//   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -109,7 +107,6 @@ const currentProduct = useSelector(store => store.ecommerceData.currentProduct)
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
                     </Text>{' '}
-                    {/* {currentProduct?.rating?.rate} */}
                     <Rating rating={currentProduct?.rating?.rate} numReviews={currentProduct?.rating?.count} />
                   </ListItem>
                   <ListItem>

@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
     authReducer
 });
  
-const composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSIONS_COMPOSE__ ||compose;
+const composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSIONS_COMPOSE__||compose;
 
 export const store =legacy_createStore(
     rootReducer,
