@@ -12,16 +12,41 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { signIn } from '../Redux/auth/actions';
   
   export default function Login() {
- const dispatch = useDispatch();
- const [userEmail,setUserEmail] =useState("");
- const [userPassword,setUserPassword] = useState("");
+    const dispatch=useDispatch(); 
+    const location=useLocation();
+    const authStatus=useSelector(store=>store.authReducer.auth)
 
- 
+    console.log(location)
+    const navigate=useNavigate()
+    const [userEmail,setUserEmail] =useState('eve.holt@reqres.in');
+    const [userPassword,setUserPassword]=useState('');
 
+    const handleUserEmailChange =(e)=>{
+      setUserEmail(e.target.value);
+    }
+
+    const handleUserPasswordChange=(e)=>{
+      setUserPassword(e.target.value);
+    }
+  const submitHandler = (e)=>{
+       e.preventDefault();
+       dispatch(signIn({email: userEmail, password: userPassword}))
+  }
+
+    useEffect(()=>{
+      if(location?.state && authStatus){
+        navigate(location.state,{replace:true});
+      }
+    },[location?.state,navigate,{replace:true},authStatus])
+
+
+    // console.log(userEmail,userPassword)
     return (
       <Flex
         minH={'100vh'}
@@ -41,13 +66,14 @@ import { useDispatch } from 'react-redux';
             boxShadow={'lg'}
             p={8}>
             <Stack spacing={4}>
-              <FormControl id="email">
+              <form onSubmit={submitHandler}>
+              <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+                <Input type="email" value={userEmail} onChange={handleUserEmailChange} />
               </FormControl>
-              <FormControl id="password">
+              <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
-                <Input type="password"value={userPassword} onChange={(e)=>setUserPassword(e.target.value)} />
+                <Input type="password" value={userPassword} onChange={handleUserPasswordChange} />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
@@ -62,10 +88,14 @@ import { useDispatch } from 'react-redux';
                   color={'white'}
                   _hover={{
                     bg: 'blue.500',
-                  }}>
+                  }}
+                  // onClick={submitHandler}
+                  type="submit"
+                  >
                   Sign in
                 </Button>
               </Stack>
+            </form>
             </Stack>
           </Box>
         </Stack>
