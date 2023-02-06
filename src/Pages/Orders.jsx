@@ -12,7 +12,6 @@ const Orders = () => {
         dispatch(fetchOrders())
     },[dispatch])
     
-    console.log(orders)
   return (
     <Box>
            <Heading>Orders</Heading>

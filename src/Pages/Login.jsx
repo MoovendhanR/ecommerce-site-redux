@@ -22,7 +22,7 @@ import { signIn } from '../Redux/auth/actions';
     const location=useLocation();
     const authStatus=useSelector(store=>store.authReducer.auth)
 
-    console.log(location)
+    // console.log(location)
     const navigate=useNavigate()
     const [userEmail,setUserEmail] =useState('eve.holt@reqres.in');
     const [userPassword,setUserPassword]=useState('');
@@ -40,10 +40,10 @@ import { signIn } from '../Redux/auth/actions';
   }
 
     useEffect(()=>{
-      if(location?.state && authStatus){
-        navigate(location.state,{replace:true});
+      if(location?.state?.pathname && authStatus){
+        navigate(location?.state?.pathname,{replace:true});
       }
-    },[location?.state,navigate,{replace:true},authStatus])
+    },[location?.state?.pathname,navigate,authStatus])
 
 
     // console.log(userEmail,userPassword)

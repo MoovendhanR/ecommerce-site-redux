@@ -31,7 +31,6 @@ const Products=()=>{
             dispatch(fetchData(params))
         }
     },[dispatch,products?.length,searchParams])
-    console.log("Products",products);
     return(
         <Box>
             <Stack display={{md:"flex"}} flexDirection={{md:"row"}}>

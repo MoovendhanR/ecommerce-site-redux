@@ -15,7 +15,6 @@ const Cart = () => {
           dispatch(removeCartItem())
 
         },[dispatch])
-        console.log(cart)
         const remmoveProduct =(id)=>{
              dispatch(removeCartItem(id))
         }

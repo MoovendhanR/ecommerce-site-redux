@@ -27,7 +27,6 @@ import { addProductCart, getSingleProduct } from '../Redux/products/action';
 const {id}=useParams();
 const dispatch=useDispatch();
 const currentProduct = useSelector(store => store.ecommerceData.currentProduct)
-console.log(currentProduct);
    useEffect(() => {
           if(id){
             dispatch(getSingleProduct(id))

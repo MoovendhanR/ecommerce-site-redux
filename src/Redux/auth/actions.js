@@ -29,11 +29,13 @@ const signInFailure = (payload) => {
 
 const signIn = (payload) => (dispatch) => {
     dispatch(signInRequest())
-    Axios.post("/api/login", payload,{baseURL:"https://reqres.in"})
+    Axios.post("/api/login", payload, { baseURL: "https://reqres.in"})
     .then((r)=>{
-        console.log(r)
+          console.log(r)
         dispatch(signInSuccess(r.data))})
-    .then((err)=>dispatch(signInFailure(err)))
+    .then((err)=>{
+        console.log(err)
+        dispatch(signInFailure(err))})
 }
 
 
