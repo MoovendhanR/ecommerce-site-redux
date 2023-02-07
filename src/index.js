@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import {Provider} from "react-redux"
 import { store } from './Redux/store';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://outstanding-fawn-jeans.cyclic.app';
 axios.defaults.headers.post["Content-Type"] = "application/json"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
