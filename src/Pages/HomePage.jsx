@@ -6,9 +6,12 @@ import {
     VStack,
     useBreakpointValue,
   } from '@chakra-ui/react';
+import Carousel from '../components/Carousals';
   
   export default function WithBackgroundImage() {
     return (
+      <>
+      <Carousel/>
       <Flex
         w={'full'}
         h={'100vh'}
@@ -50,5 +53,6 @@ import {
           </Stack>
         </VStack>
       </Flex>
+      </>
     );
   }
