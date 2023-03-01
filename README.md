@@ -1,6 +1,6 @@
-#ECOMMERCESITE-USING-REDUX
+## E-COMMERCESITE-USING-REDUX
 
-I developed this small ecommerce-site within a week using only redux.
+I developed this small e-commerce-site within a week using only redux.
 
 
 ## 🛠 Tech Stack <br/>
