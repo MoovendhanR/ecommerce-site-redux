@@ -15,7 +15,7 @@ Frontend -> Vercel<br/>
 Backend   -> Cyclic.sh
 
 
-## Some of the Screenshots
+## Some of the Screenshots of the applications
 
 
 ![Screenshot (556)](https://user-images.githubusercontent.com/87975437/217300273-dd8463bc-a3a1-4351-9f4d-5c5ebe7e9c96.png)
